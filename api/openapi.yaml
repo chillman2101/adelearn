@@ -1,0 +1,363 @@
+openapi: 3.1.0
+info:
+  title: Adelearn Exam Management API
+  version: 0.1.0
+  description: Local teacher workspace API for one class.
+servers:
+  - url: http://localhost:8080
+security:
+  - bearerAuth: []
+paths:
+  /healthz:
+    get:
+      summary: Liveness check
+      responses:
+        '200': { description: API is ready }
+  /api/v1/subjects:
+    get: { summary: List subjects, responses: { '200': { description: Subject catalog } } }
+    post:
+      summary: Create or reuse a subject
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/CatalogInput' } } } }
+      responses: { '201': { description: Subject entry } }
+  /api/v1/classes:
+    get: { summary: List classes, responses: { '200': { description: Class catalog } } }
+    post:
+      summary: Create or reuse a class
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/CatalogInput' } } } }
+      responses: { '201': { description: Class entry } }
+  /api/v1/teachers:
+    get: { summary: List teachers, responses: { '200': { description: Teacher catalog } } }
+    post:
+      summary: Create or reuse a teacher
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/CatalogInput' } } } }
+      responses: { '201': { description: Teacher entry } }
+  /api/v1/auth/login:
+    post:
+      security: []
+      summary: Login for teacher or exam student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [role, password]
+              properties:
+                role: { type: string, enum: [teacher, student] }
+                username: { type: string, description: Teacher username }
+                user_id: { type: string, description: Exam-specific student ID }
+                password: { type: string }
+      responses:
+        '200': { description: Login succeeded; returns a session token and safe profile }
+        '401': { description: Credentials are invalid }
+  /api/v1/auth/session:
+    get:
+      security: []
+      summary: Resolve a bearer session for either role
+      parameters:
+        - { in: header, name: Authorization, required: true, schema: { type: string } }
+      responses: { '200': { description: Current safe session profile }, '401': { description: Session expired or revoked } }
+  /api/v1/auth/logout:
+    post:
+      summary: Revoke the current session
+      responses: { '204': { description: Session revoked } }
+  /api/v1/auth/change-password:
+    post:
+      summary: Change current teacher username and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [old_password, new_username, new_password]
+              properties:
+                old_password: { type: string }
+                new_username: { type: string }
+                new_password: { type: string }
+      responses: { '204': { description: Credentials changed }, '400': { description: Invalid current password or new credentials } }
+  /api/v1/settings:
+    get:
+      summary: Get the active teacher, class, and academic year settings
+      responses: { '200': { description: Active settings with teacher and class IDs and names } }
+    put:
+      summary: Save the active teacher, class, and academic year settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [teacher_id, class_id, academic_year]
+              properties:
+                teacher_id: { type: string, format: uuid }
+                class_id: { type: string, format: uuid }
+                academic_year: { type: string }
+      responses: { '200': { description: Saved active settings }, '400': { $ref: '#/components/responses/ValidationError' } }
+  /api/v1/students:
+    get:
+      summary: List active students, optionally filtered by name and class
+      parameters:
+        - { in: query, name: q, schema: { type: string } }
+        - { in: query, name: class_id, schema: { type: string, format: uuid } }
+      responses: { '200': { description: Student list with class IDs and names } }
+    post:
+      summary: Add a student to a class
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, class_id]
+              properties:
+                name: { type: string, minLength: 1 }
+                class_id: { type: string, format: uuid }
+      responses: { '201': { description: Created student }, '400': { $ref: '#/components/responses/ValidationError' } }
+  /api/v1/students/{id}:
+    parameters: [{ in: path, name: id, required: true, schema: { type: string, format: uuid } }]
+    get:
+      summary: Get a student
+      responses: { '200': { description: Student }, '404': { $ref: '#/components/responses/NotFound' } }
+    put:
+      summary: Update a student's name or class
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, class_id]
+              properties:
+                name: { type: string, minLength: 1 }
+                class_id: { type: string, format: uuid }
+      responses: { '200': { description: Updated student }, '400': { $ref: '#/components/responses/ValidationError' }, '404': { $ref: '#/components/responses/NotFound' } }
+    delete:
+      summary: Archive a student
+      responses: { '204': { description: Archived }, '404': { $ref: '#/components/responses/NotFound' } }
+  /api/v1/topics:
+    get:
+      summary: List topics
+      parameters: [{ in: query, name: subject_id, schema: { type: string, format: uuid } }]
+      responses: { '200': { description: Topic catalog } }
+    post:
+      summary: Create or reuse a topic
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/CatalogInput' } } } }
+      responses: { '201': { description: Topic entry } }
+  /api/v1/questions:
+    get:
+      summary: Search and filter the question bank
+      parameters:
+        - { in: query, name: q, schema: { type: string } }
+        - { in: query, name: subject_id, schema: { type: string } }
+        - { in: query, name: topic_id, schema: { type: string } }
+        - { in: query, name: class_id, schema: { type: string } }
+        - { in: query, name: type, schema: { $ref: '#/components/schemas/QuestionType' } }
+        - { in: query, name: difficulty, schema: { type: string } }
+        - { in: query, name: tag, schema: { type: string } }
+        - { in: query, name: created_by, schema: { type: string } }
+        - { in: query, name: used, schema: { type: boolean } }
+      responses:
+        '200': { description: Matching questions, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/Question' } } } } }
+    post:
+      summary: Create a bank question
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/QuestionInput' } } } }
+      responses:
+        '201': { description: Created question }
+        '400': { $ref: '#/components/responses/ValidationError' }
+  /api/v1/questions/import-template:
+    get:
+      summary: Download the CSV question import template
+      description: Template uses teacher-friendly columns for each supported question type; no JSON field is required. List items use one item per line in a cell. Multiple accepted answers use the | separator.
+      responses: { '200': { description: CSV template with plain-language columns for question answers } }
+  /api/v1/questions/import/preview:
+    post:
+      summary: Parse an Excel or CSV file with teacher-friendly answer columns and validate rows without saving
+      description: Returns row errors that block import and duplicate warnings that are informational. Duplicate prompts are detected case-insensitively after collapsing whitespace, both against active bank questions and within the uploaded file.
+      requestBody: { required: true, content: { multipart/form-data: { schema: { type: object, required: [file], properties: { file: { type: string, format: binary } } } } } }
+      responses: { '200': { description: Parsed question rows and validation errors }, '400': { $ref: '#/components/responses/ValidationError' } }
+  /api/v1/questions/import:
+    post:
+      summary: Save a previously validated batch of questions atomically
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [questions], properties: { questions: { type: array, minItems: 1, maxItems: 500, items: { $ref: '#/components/schemas/QuestionInput' } } } } } }
+      responses: { '201': { description: Imported question batch }, '400': { $ref: '#/components/responses/ValidationError' } }
+  /api/v1/questions/{id}:
+    parameters: [{ in: path, name: id, required: true, schema: { type: string, format: uuid } }]
+    get:
+      summary: Get a question
+      responses: { '200': { description: Question }, '404': { $ref: '#/components/responses/NotFound' } }
+    put:
+      summary: Update a question
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/QuestionInput' } } } }
+      responses: { '200': { description: Updated question }, '400': { $ref: '#/components/responses/ValidationError' } }
+    delete:
+      summary: Archive a question
+      responses: { '204': { description: Archived }, '404': { $ref: '#/components/responses/NotFound' } }
+  /api/v1/media:
+    post:
+      summary: Upload an image for a prompt or answer option
+      requestBody: { required: true, content: { multipart/form-data: { schema: { type: object, required: [file], properties: { file: { type: string, format: binary } } } } } }
+      responses: { '201': { description: Stored image }, '400': { $ref: '#/components/responses/ValidationError' } }
+  /api/v1/exams:
+    get:
+      summary: List exams
+      responses: { '200': { description: Exam list } }
+    post:
+      summary: Create a draft exam
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/ExamInput' } } } }
+      responses: { '201': { description: Draft exam }, '400': { $ref: '#/components/responses/ValidationError' } }
+  /api/v1/exams/{id}:
+    parameters: [{ in: path, name: id, required: true, schema: { type: string, format: uuid } }]
+    get:
+      summary: Get exam settings and question composition
+      responses: { '200': { description: Exam details }, '404': { $ref: '#/components/responses/NotFound' } }
+    put:
+      summary: Update a draft exam
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/ExamInput' } } } }
+      responses: { '200': { description: Updated exam }, '400': { $ref: '#/components/responses/ValidationError' } }
+  /api/v1/exams/{id}/schedule:
+    parameters: [{ in: path, name: id, required: true, schema: { type: string, format: uuid } }]
+    put:
+      summary: Update only the schedule of an exam, including a published exam
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [starts_at, checkin_ends_at]
+              properties:
+                starts_at: { type: string, format: date-time }
+                checkin_ends_at: { type: string, format: date-time }
+      responses: { '200': { description: Updated exam schedule }, '400': { $ref: '#/components/responses/ValidationError' } }
+  /api/v1/exams/{id}/student-access:
+    parameters: [{ in: path, name: id, required: true, schema: { type: string, format: uuid } }]
+    get:
+      summary: List active students in the exam class and their current access IDs without revealing passwords
+      responses:
+        '200':
+          description: One row per active student in the exam class; students without access have empty credentials and passwords are never returned
+          content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/StudentAccess' } } } }
+  /api/v1/exams/{id}/results:
+    parameters: [{ in: path, name: id, required: true, schema: { type: string, format: uuid } }]
+    get:
+      summary: List exam students and final scores using the exam score policy
+      responses: { '200': { description: Student status and calculated scores; essays awaiting manual grading do not show a final score }, '404': { $ref: '#/components/responses/NotFound' } }
+  /api/v1/exams/{id}/student-access/generate:
+    parameters: [{ in: path, name: id, required: true, schema: { type: string, format: uuid } }]
+    post:
+      summary: Generate credentials for every active student in the exam class
+      description: Revokes all previous credentials for this exam and creates a fresh user ID and password for each active student. Passwords are stored as bcrypt hashes and returned only in this response.
+      responses:
+        '200':
+          description: Newly generated credentials; passwords are returned only once
+          content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/GeneratedStudentAccess' } } } }
+        '400': { $ref: '#/components/responses/ValidationError' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/v1/exams/{id}/student-access/{student_id}/generate:
+    parameters:
+      - { in: path, name: id, required: true, schema: { type: string, format: uuid } }
+      - { in: path, name: student_id, required: true, schema: { type: string, format: uuid } }
+    post:
+      summary: Generate or rotate access for one student only
+      description: Revokes only the selected student's prior exam credential and active session. Other students' credentials are unchanged. The new password is stored as a bcrypt hash and returned only in this response.
+      responses:
+        '200': { description: Newly generated credentials for this student; password is returned only once }
+        '400': { $ref: '#/components/responses/ValidationError' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/v1/exams/{id}/questions:
+    put:
+      summary: Save a draft composition with bank and inline questions
+      description: Drafts may contain fewer questions than question_count. Publishing is allowed only after the exact requested count has been saved.
+      parameters: [{ in: path, name: id, required: true, schema: { type: string, format: uuid } }]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/Composition' } } } }
+      responses: { '200': { description: Saved composition }, '400': { $ref: '#/components/responses/ValidationError' } }
+  /api/v1/exams/{id}/publish:
+    post:
+      summary: Activate a complete draft and lock its settings and question snapshots
+      parameters: [{ in: path, name: id, required: true, schema: { type: string, format: uuid } }]
+      responses: { '200': { description: Published exam }, '400': { $ref: '#/components/responses/ValidationError' } }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  responses:
+    ValidationError:
+      description: Input failed validation
+      content: { application/json: { schema: { $ref: '#/components/schemas/Error' }, example: { code: validation_error, message: Periksa kembali data yang dimasukkan., field_errors: { points: Bobot soal harus lebih dari 0. } } } }
+    NotFound:
+      description: Record not found
+      content: { application/json: { schema: { $ref: '#/components/schemas/Error' } } }
+  schemas:
+    CatalogInput:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string, minLength: 1 }
+        subject_id: { type: string, format: uuid }
+    StudentAccess:
+      type: object
+      required: [student_id, student_name, user_id, generated_at]
+      properties:
+        student_id: { type: string, format: uuid }
+        student_name: { type: string }
+        user_id: { type: string }
+        generated_at: { type: string, format: date-time }
+    GeneratedStudentAccess:
+      allOf:
+        - { $ref: '#/components/schemas/StudentAccess' }
+        - type: object
+          required: [password]
+          properties:
+            password: { type: string }
+    Error:
+      type: object
+      required: [code, message]
+      properties: { code: { type: string }, message: { type: string }, field_errors: { type: object, additionalProperties: { type: string } } }
+    QuestionType:
+      type: string
+      enum: [single_choice, multi_select, true_false, short_answer, fill_blank, essay, matching, ordering]
+    QuestionInput:
+      type: object
+      required: [type, prompt, points]
+      properties:
+        type: { $ref: '#/components/schemas/QuestionType' }
+        prompt: { type: string }
+        data: { type: object, description: Type-specific options, statements, accepted answers, blanks, pairs, or items }
+        points: { type: number, exclusiveMinimum: 0 }
+        subject: { type: string }
+        topic: { type: string }
+        class: { type: string }
+        difficulty: { type: string, enum: [Mudah, Sedang, Sulit] }
+        tags: { type: array, items: { type: string } }
+      examples:
+        - { type: single_choice, prompt: 'Berapa hasil 2 + 2?', points: 1, data: { options: [{ id: a, text: '3', correct: false }, { id: b, text: '4', correct: true }] } }
+        - { type: multi_select, prompt: 'Pilih bilangan genap.', points: 2, data: { options: [{ id: a, text: '2', correct: true }, { id: b, text: '3', correct: false }, { id: c, text: '4', correct: true }] } }
+        - { type: true_false, prompt: 'Tentukan benar atau salah.', points: 2, data: { statements: [{ id: s1, text: 'Bumi mengelilingi Matahari.', correct: true }] } }
+        - { type: short_answer, prompt: 'Ibu kota Indonesia?', points: 1, data: { accepted_answers: [Jakarta] } }
+        - { type: fill_blank, prompt: '5 × 3 = __', points: 1, data: { blanks: [{ id: b1, accepted_answers: ['15'] }] } }
+        - { type: essay, prompt: 'Jelaskan proses fotosintesis.', points: 5, data: { rubric: 'Uraian konsep', manual_grading: true } }
+        - { type: matching, prompt: 'Pasangkan istilah dan arti.', points: 4, data: { pairs: [{ id: p1, left: Evaporasi, right: Penguapan }, { id: p2, left: Kondensasi, right: Pengembunan }] } }
+        - { type: ordering, prompt: 'Urutkan tahapan daur air.', points: 4, data: { items: [{ id: i1, text: Evaporasi }, { id: i2, text: Kondensasi }, { id: i3, text: Presipitasi }] } }
+    Question:
+      allOf: [{ $ref: '#/components/schemas/QuestionInput' }, { type: object, properties: { id: { type: string }, used: { type: boolean }, created_at: { type: string, format: date-time }, updated_at: { type: string, format: date-time } } }]
+    ExamInput:
+      type: object
+      required: [title, starts_at, checkin_ends_at]
+      properties:
+        title: { type: string }
+        subject: { type: string }
+        class: { type: string }
+        starts_at: { type: string, format: date-time }
+        checkin_ends_at: { type: string, format: date-time }
+        timer_enabled: { type: boolean }
+        duration_minutes: { type: [integer, 'null'] }
+        repeat_count: { type: integer, minimum: 0, maximum: 10 }
+        score_policy: { type: string, enum: [highest, latest, average] }
+        question_count: { type: integer, minimum: 1 }
+    Composition:
+      type: object
+      properties:
+        questions: { type: array, items: { type: object, properties: { source_kind: { type: string, enum: [bank_manual, inline] }, question_id: { type: string }, points: { type: number }, save_to_bank: { type: boolean }, question: { $ref: '#/components/schemas/QuestionInput' } } } }
+        random: { type: array, items: { type: object, required: [count], properties: { count: { type: integer, minimum: 1 }, subject: { type: string }, topic: { type: string }, class: { type: string }, type: { $ref: '#/components/schemas/QuestionType' }, difficulty: { type: string }, tag: { type: string } } } }

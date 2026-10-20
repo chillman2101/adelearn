@@ -1,0 +1,801 @@
+"Tipe soal","Pertanyaan","Bobot","Mata pelajaran","Topik","Kesulitan","Tag","Pilihan jawaban","Nomor kunci pilihan","Pernyataan","Kunci pernyataan","Jawaban diterima","Kunci bagian isian","Rubrik esai","Pasangan menjodohkan","Item urutan","Gambar pertanyaan (URL)","Gambar pilihan (URL)"
+"Pilihan ganda","Berapakah hasil dari 12 + 7?","1","Matematika","Operasi hitung","Mudah","latihan, campuran","17
+21
+84
+19","4","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 23 - 8?","1","Matematika","Bilangan","Mudah","latihan, campuran","8
+14
+15
+16","3","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 4 × 5?","1","Matematika","Persentase","Mudah","latihan, campuran","9
+18
+22
+20","4","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 30 ÷ 5?","1","Matematika","Operasi hitung","Mudah","latihan, campuran","5
+7
+6
+30","3","","","","","","","","",""
+"Pilihan ganda","Berapakah 10% dari 600?","1","Matematika","Bilangan","Mudah","latihan, campuran","600
+30
+120
+60","4","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 27 + 12?","1","Matematika","Persentase","Mudah","latihan, campuran","41
+324
+37
+39","4","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 43 - 13?","1","Matematika","Operasi hitung","Mudah","latihan, campuran","29
+31
+30
+13","3","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 9 × 10?","1","Matematika","Bilangan","Mudah","latihan, campuran","19
+88
+90
+92","3","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 110 ÷ 10?","1","Matematika","Persentase","Mudah","latihan, campuran","11
+12
+10
+110","1","","","","","","","","",""
+"Pilihan ganda","Berapakah 10% dari 1100?","1","Matematika","Operasi hitung","Mudah","latihan, campuran","55
+220
+110
+1100","3","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 42 + 17?","1","Matematika","Bilangan","Sedang","latihan, campuran","57
+61
+714
+59","4","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 63 - 18?","1","Matematika","Persentase","Sedang","latihan, campuran","18
+44
+46
+45","4","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 14 × 15?","1","Matematika","Operasi hitung","Sedang","latihan, campuran","208
+29
+210
+212","3","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 240 ÷ 15?","1","Matematika","Bilangan","Sedang","latihan, campuran","17
+240
+15
+16","4","","","","","","","","",""
+"Pilihan ganda","Berapakah 10% dari 1600?","1","Matematika","Persentase","Sedang","latihan, campuran","160
+1600
+320
+80","1","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 57 + 22?","1","Matematika","Operasi hitung","Sedang","latihan, campuran","1254
+79
+77
+81","2","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 83 - 23?","1","Matematika","Bilangan","Sedang","latihan, campuran","61
+23
+59
+60","4","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 19 × 20?","1","Matematika","Persentase","Sedang","latihan, campuran","39
+378
+380
+382","3","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 420 ÷ 20?","1","Matematika","Operasi hitung","Sedang","latihan, campuran","420
+22
+20
+21","4","","","","","","","","",""
+"Pilihan ganda","Berapakah 10% dari 2100?","1","Matematika","Bilangan","Sedang","latihan, campuran","210
+2100
+105
+420","1","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 72 + 27?","1","Matematika","Persentase","Sedang","latihan, campuran","99
+97
+1944
+101","1","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 103 - 28?","1","Matematika","Operasi hitung","Sedang","latihan, campuran","75
+28
+74
+76","1","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 24 × 25?","1","Matematika","Bilangan","Sedang","latihan, campuran","49
+598
+602
+600","4","","","","","","","","",""
+"Pilihan ganda","Berapakah hasil dari 650 ÷ 25?","1","Matematika","Persentase","Sedang","latihan, campuran","27
+650
+26
+25","3","","","","","","","","",""
+"Pilihan ganda","Berapakah 10% dari 2600?","1","Matematika","Operasi hitung","Sedang","latihan, campuran","130
+260
+2600
+520","2","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'apple' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","jeruk
+anggur
+apel
+pisang","3","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'book' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","kursi
+pintu
+meja
+buku","4","","","","","","","","",""
+"Pilihan ganda","Apa arti kata ' 학교' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","rumah
+kantor
+sekolah
+pasar","3","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'water' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","tanah
+api
+air
+udara","3","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'beautiful' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","indah
+marah
+lapar
+lelah","1","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'quickly' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","kemarin
+dengan cepat
+di sana
+perlahan","2","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'teacher' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","guru
+pelukis
+petani
+dokter","1","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'window' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","jendela
+lantai
+atap
+dinding","1","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'morning' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","malam
+sore
+pagi
+siang","3","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'daughter' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","saudara laki-laki
+paman
+anak perempuan
+kakek","3","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'library' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","laboratorium
+lapangan
+kantin
+perpustakaan","4","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'borrow' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","membeli
+meminjam
+menjual
+membuang","2","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'strong' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","kuat
+sempit
+lemah
+licin","1","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'hungry' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","haus
+lapar
+senang
+mengantuk","2","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'between' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","di belakang
+di atas
+di bawah
+di antara","4","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'always' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","jarang
+tidak pernah
+selalu
+kadang-kadang","3","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'write' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","menggambar
+membaca
+menulis
+berlari","3","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'careful' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","mahal
+berisik
+terlambat
+berhati-hati","4","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'early' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","pelan
+lebih awal
+jauh
+terakhir","2","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'weather' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","pekerjaan
+cuaca
+perjalanan
+makanan","2","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'kitchen' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","kebun
+dapur
+garasi
+kamar tidur","2","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'travel' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","berbelanja
+beristirahat
+memasak
+bepergian","4","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'clean' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","kotor
+penuh
+bersih
+kosong","3","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'quiet' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","terang
+tenang
+ramai
+gelap","2","","","","","","","","",""
+"Pilihan ganda","Apa arti kata 'health' dalam bahasa Indonesia?","1","Bahasa Inggris","Kosakata","Mudah","latihan, campuran","kekayaan
+cuaca
+sejarah
+kesehatan","4","","","","","","","","",""
+"Pilihan ganda","Organ utama untuk memompa darah ke seluruh tubuh adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Ginjal
+Paru-paru
+Lambung
+Jantung","4","","","","","","","","",""
+"Pilihan ganda","Proses tumbuhan membuat makanan dengan bantuan cahaya disebut…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Respirasi
+Kondensasi
+Evaporasi
+Fotosintesis","4","","","","","","","","",""
+"Pilihan ganda","Planet yang dikenal sebagai Planet Merah adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Mars
+Merkurius
+Jupiter
+Venus","1","","","","","","","","",""
+"Pilihan ganda","Gas yang diperlukan manusia untuk bernapas adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Oksigen
+Nitrogen murni
+Helium
+Karbon dioksida","1","","","","","","","","",""
+"Pilihan ganda","Perubahan wujud dari cair menjadi gas disebut…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Pencairan
+Penguapan
+Pengembunan
+Pembekuan","2","","","","","","","","",""
+"Pilihan ganda","Gaya yang menarik benda menuju pusat Bumi adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Gravitasi
+Pegas
+Gesek
+Magnet","1","","","","","","","","",""
+"Pilihan ganda","Sumber energi utama bagi Bumi adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Matahari
+Bulan
+Angin
+Batu bara","1","","","","","","","","",""
+"Pilihan ganda","Bagian tumbuhan yang menyerap air dari tanah adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Bunga
+Buah
+Daun
+Akar","4","","","","","","","","",""
+"Pilihan ganda","Organ pernapasan utama manusia adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Hati
+Usus
+Jantung
+Paru-paru","4","","","","","","","","",""
+"Pilihan ganda","Hewan yang berkembang biak dengan bertelur disebut…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Omnivor
+Ovipar
+Mamalia
+Vivipar","2","","","","","","","","",""
+"Pilihan ganda","Rangka manusia berfungsi antara lain untuk…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Mencerna makanan
+Mengalirkan darah
+Menyaring udara
+Melindungi organ tubuh","4","","","","","","","","",""
+"Pilihan ganda","Benda yang dapat ditarik magnet umumnya terbuat dari…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Karet
+Kertas
+Besi
+Kayu","3","","","","","","","","",""
+"Pilihan ganda","Satuan dasar panjang dalam SI adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Liter
+Sekon
+Meter
+Kilogram","3","","","","","","","","",""
+"Pilihan ganda","Air murni membeku pada suhu…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","0°C
+10°C
+100°C
+50°C","1","","","","","","","","",""
+"Pilihan ganda","Hubungan makan dan dimakan dalam ekosistem disebut…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Jaring listrik
+Rantai makanan
+Daur ulang
+Siklus batuan","2","","","","","","","","",""
+"Pilihan ganda","Hewan pemakan tumbuhan disebut…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Omnivor
+Karnivor
+Herbivor
+Insektivor","3","","","","","","","","",""
+"Pilihan ganda","Pusat tata surya kita adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Bumi
+Bulan
+Matahari
+Mars","3","","","","","","","","",""
+"Pilihan ganda","Bunyi merambat paling cepat melalui…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Cahaya
+Ruang hampa
+Benda gas
+Benda padat","4","","","","","","","","",""
+"Pilihan ganda","Alat untuk mengukur suhu adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Termometer
+Speedometer
+Barometer
+Anemometer","1","","","","","","","","",""
+"Pilihan ganda","Darah berwarna merah terutama karena mengandung…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Klorofil
+Hemoglobin
+Insulin
+Kalsium","2","","","","","","","","",""
+"Pilihan ganda","Lapisan udara yang menyelimuti Bumi disebut…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Litosfer
+Hidrosfer
+Biosfer
+Atmosfer","4","","","","","","","","",""
+"Pilihan ganda","Bulan tampak bercahaya karena…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Menghasilkan api
+Menyimpan listrik
+Memantulkan cahaya Matahari
+Memantulkan cahaya Bumi saja","3","","","","","","","","",""
+"Pilihan ganda","Perubahan wujud gas menjadi cair disebut…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Penyubliman
+Pembakaran
+Pengembunan
+Penguapan","3","","","","","","","","",""
+"Pilihan ganda","Bagian mata yang mengatur banyaknya cahaya masuk adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Kornea
+Iris
+Lensa
+Retina","2","","","","","","","","",""
+"Pilihan ganda","Sumber energi terbarukan yang berasal dari angin adalah…","1","IPA","Ilmu pengetahuan alam","Mudah","latihan, campuran","Gas alam
+Energi bayu
+Bensin
+Batu bara","2","","","","","","","","",""
+"Pilihan ganda","Benua terluas di dunia adalah…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Eropa
+Australia
+Afrika
+Asia","4","","","","","","","","",""
+"Pilihan ganda","Samudra terluas di dunia adalah…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Samudra Hindia
+Samudra Arktik
+Samudra Atlantik
+Samudra Pasifik","4","","","","","","","","",""
+"Pilihan ganda","Proklamasi kemerdekaan Indonesia dibacakan pada…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","1 Juni 1945
+20 Mei 1908
+10 November 1945
+17 Agustus 1945","4","","","","","","","","",""
+"Pilihan ganda","Tokoh yang membacakan teks Proklamasi adalah…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Soekarno
+Sutan Sjahrir
+Mohammad Hatta
+Ki Hajar Dewantara","1","","","","","","","","",""
+"Pilihan ganda","Ibu kota Provinsi Jawa Barat adalah…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Surabaya
+Bandung
+Serang
+Semarang","2","","","","","","","","",""
+"Pilihan ganda","Kegiatan menghasilkan barang atau jasa disebut…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Distribusi
+Produksi
+Promosi
+Konsumsi","2","","","","","","","","",""
+"Pilihan ganda","Orang yang menggunakan barang atau jasa disebut…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Konsumen
+Distributor
+Produsen
+Eksportir","1","","","","","","","","",""
+"Pilihan ganda","Kegiatan menyalurkan barang dari produsen ke konsumen disebut…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Distribusi
+Investasi
+Produksi
+Konsumsi","1","","","","","","","","",""
+"Pilihan ganda","Garis khayal yang membagi Bumi menjadi belahan utara dan selatan adalah…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Garis tanggal
+Garis bujur 90°
+Khatulistiwa
+Meridian utama","3","","","","","","","","",""
+"Pilihan ganda","ASEAN didirikan di kota…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Hanoi
+Manila
+Bangkok
+Jakarta","3","","","","","","","","",""
+"Pilihan ganda","Candi Borobudur bercorak agama…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Hindu
+Kristen
+Buddha
+Islam","3","","","","","","","","",""
+"Pilihan ganda","Hari Pahlawan diperingati setiap…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","17 Agustus
+10 November
+2 Mei
+28 Oktober","2","","","","","","","","",""
+"Pilihan ganda","Mata uang resmi Jepang adalah…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Won
+Baht
+Yuan
+Yen","4","","","","","","","","",""
+"Pilihan ganda","Peta yang menunjukkan tinggi rendah permukaan bumi disebut peta…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Jalan
+Iklim
+Topografi
+Politik","3","","","","","","","","",""
+"Pilihan ganda","Kegiatan membeli barang dari luar negeri disebut…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Produksi
+Impor
+Distribusi
+Ekspor","2","","","","","","","","",""
+"Pilihan ganda","Kegiatan menjual barang ke luar negeri disebut…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Barter
+Ekspor
+Konsumsi
+Impor","2","","","","","","","","",""
+"Pilihan ganda","Salah satu negara pendiri ASEAN adalah…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","India
+Tiongkok
+Jepang
+Indonesia","4","","","","","","","","",""
+"Pilihan ganda","Peristiwa Sumpah Pemuda terjadi pada tahun…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","1965
+1908
+1928
+1945","3","","","","","","","","",""
+"Pilihan ganda","Gunung tertinggi di Indonesia adalah…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Puncak Jaya
+Merapi
+Rinjani
+Semeru","1","","","","","","","","",""
+"Pilihan ganda","Mata pencaharian utama masyarakat pesisir antara lain…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Nelayan
+Peternak unta
+Penambang salju
+Petani teh","1","","","","","","","","",""
+"Pilihan ganda","Pusat pemerintahan negara Indonesia berada di…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Surabaya
+Jakarta
+Bandung
+Medan","2","","","","","","","","",""
+"Pilihan ganda","Candi Prambanan merupakan peninggalan bercorak…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Islam
+Konghucu
+Buddha
+Hindu","4","","","","","","","","",""
+"Pilihan ganda","Benua yang seluruh wilayahnya berada di belahan selatan adalah…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Eropa
+Amerika Utara
+Asia
+Australia","4","","","","","","","","",""
+"Pilihan ganda","Kegiatan memakai barang untuk memenuhi kebutuhan disebut…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Ekspor
+Produksi
+Konsumsi
+Distribusi","3","","","","","","","","",""
+"Pilihan ganda","Masyarakat yang tinggal di dataran tinggi umumnya banyak mengembangkan…","1","IPS","Geografi dan sejarah","Mudah","latihan, campuran","Pelabuhan laut
+Tambak garam
+Budidaya rumput laut
+Perkebunan sayur dan teh","4","","","","","","","","",""
+"Pilihan ganda","Dasar negara Republik Indonesia adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Proklamasi
+UUD 1945
+Pancasila
+Bhinneka Tunggal Ika","3","","","","","","","","",""
+"Pilihan ganda","Lambang negara Indonesia adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Harimau Sumatra
+Garuda Pancasila
+Burung Cenderawasih
+Komodo","2","","","","","","","","",""
+"Pilihan ganda","Semboyan Bhinneka Tunggal Ika memiliki arti…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Bersatu kita teguh
+Berbeda-beda tetapi tetap satu
+Satu bangsa satu bahasa
+Rajin pangkal pandai","2","","","","","","","","",""
+"Pilihan ganda","Jumlah sila dalam Pancasila adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Empat
+Lima
+Enam
+Tiga","2","","","","","","","","",""
+"Pilihan ganda","Lagu kebangsaan Indonesia adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Bagimu Negeri
+Garuda Pancasila
+Hari Merdeka
+Indonesia Raya","4","","","","","","","","",""
+"Pilihan ganda","Warna bendera Indonesia adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Kuning dan merah
+Merah dan putih
+Merah dan biru
+Putih dan hijau","2","","","","","","","","",""
+"Pilihan ganda","Sikap menghargai perbedaan disebut…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Permusuhan
+Egoisme
+Toleransi
+Diskriminasi","3","","","","","","","","",""
+"Pilihan ganda","Keputusan bersama sebaiknya diambil melalui…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Ancaman
+Musyawarah
+Paksaan
+Persaingan","2","","","","","","","","",""
+"Pilihan ganda","Hak adalah sesuatu yang…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Hanya dimiliki pemimpin
+Wajib dilakukan saja
+Dilarang pemerintah
+Patut diterima seseorang","4","","","","","","","","",""
+"Pilihan ganda","Kewajiban siswa di sekolah adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Mengganggu kelas
+Datang sesuka hati
+Menaati tata tertib
+Merusak fasilitas","3","","","","","","","","",""
+"Pilihan ganda","Sila ketiga Pancasila berbunyi…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Keadilan sosial bagi seluruh rakyat Indonesia
+Ketuhanan Yang Maha Esa
+Persatuan Indonesia
+Kemanusiaan yang adil dan beradab","3","","","","","","","","",""
+"Pilihan ganda","Sila kedua Pancasila dilambangkan dengan…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Rantai
+Kepala banteng
+Pohon beringin
+Bintang","1","","","","","","","","",""
+"Pilihan ganda","Sila keempat Pancasila dilambangkan dengan…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Padi dan kapas
+Kepala banteng
+Rantai
+Bintang","2","","","","","","","","",""
+"Pilihan ganda","Contoh perilaku gotong royong adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Bekerja sendiri dan menolak bantuan
+Membuang sampah ke sungai
+Menghindari tetangga
+Membersihkan lingkungan bersama","4","","","","","","","","",""
+"Pilihan ganda","UUD 1945 merupakan…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Lagu nasional
+Nama organisasi
+Lambang negara
+Konstitusi negara Indonesia","4","","","","","","","","",""
+"Pilihan ganda","Pemilihan ketua kelas secara adil mencerminkan nilai…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Monarki
+Kolonialisme
+Demokrasi
+Anarki","3","","","","","","","","",""
+"Pilihan ganda","Sikap yang sesuai dengan sila pertama adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Melarang orang berdoa
+Menghormati teman yang beribadah
+Memaksakan agama
+Mengejek keyakinan","2","","","","","","","","",""
+"Pilihan ganda","Aturan dibuat agar kehidupan bersama menjadi…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Kacau
+Sulit
+Tertib dan aman
+Tidak adil","3","","","","","","","","",""
+"Pilihan ganda","Contoh menjaga persatuan di sekolah adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Menolak kerja kelompok
+Mengejek bahasa daerah
+Memilih teman berdasarkan suku
+Berteman tanpa membeda-bedakan","4","","","","","","","","",""
+"Pilihan ganda","Warga negara yang baik sebaiknya…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Merusak fasilitas umum
+Mengabaikan hak orang lain
+Mematuhi hukum
+Melanggar aturan","3","","","","","","","","",""
+"Pilihan ganda","Sila kelima Pancasila menekankan nilai…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Ketuhanan
+Keadilan sosial
+Musyawarah
+Persatuan","2","","","","","","","","",""
+"Pilihan ganda","Lambang sila pertama Pancasila adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Bintang
+Padi dan kapas
+Pohon beringin
+Rantai","1","","","","","","","","",""
+"Pilihan ganda","Contoh hak anak di rumah adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Tidak membantu sama sekali
+Mendapat kasih sayang dan perlindungan
+Merusak barang
+Mengabaikan keluarga","2","","","","","","","","",""
+"Pilihan ganda","Bahasa persatuan bangsa Indonesia adalah…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Bahasa Jawa
+Bahasa Latin
+Bahasa Indonesia
+Bahasa Inggris","3","","","","","","","","",""
+"Pilihan ganda","Menaati kesepakatan kelas menunjukkan sikap…","1","PPKn","Pancasila dan kewarganegaraan","Mudah","latihan, campuran","Semena-mena
+Acuh tak acuh
+Tanggung jawab
+Tidak disiplin","3","","","","","","","","",""
+"Pilihan ganda","Gagasan utama dalam sebuah paragraf disebut…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Kata hubung
+Amanat
+Ide pokok
+Kalimat penjelas","3","","","","","","","","",""
+"Pilihan ganda","Kalimat yang diakhiri tanda tanya disebut kalimat…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Seru
+Tanya
+Perintah
+Berita","2","","","","","","","","",""
+"Pilihan ganda","Sinonim kata “pandai” adalah…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Lemah
+Lambat
+Pintar
+Malas","3","","","","","","","","",""
+"Pilihan ganda","Antonim kata “tinggi” adalah…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Rendah
+Panjang
+Besar
+Luas","1","","","","","","","","",""
+"Pilihan ganda","Tanda baca untuk mengakhiri kalimat berita adalah…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Tanda kurung
+Titik dua
+Koma
+Titik","4","","","","","","","","",""
+"Pilihan ganda","Tokoh yang berperan sebagai pelaku dalam cerita disebut…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Tokoh
+Latar
+Tema
+Alur","1","","","","","","","","",""
+"Pilihan ganda","Pesan yang ingin disampaikan penulis cerita disebut…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Sudut pandang
+Latar
+Judul
+Amanat","4","","","","","","","","",""
+"Pilihan ganda","Tempat dan waktu terjadinya peristiwa dalam cerita disebut…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Latar
+Konflik
+Amanat
+Tema","1","","","","","","","","",""
+"Pilihan ganda","Kata baku yang benar adalah…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Apotik
+Aktifitas
+Nasehat
+Aktivitas","4","","","","","","","","",""
+"Pilihan ganda","Kalimat ajakan biasanya menggunakan kata…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Ayo
+Karena
+Meskipun
+Tetapi","1","","","","","","","","",""
+"Pilihan ganda","Teks yang menjelaskan langkah melakukan sesuatu disebut teks…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Narasi
+Prosedur
+Deskripsi
+Puisi","2","","","","","","","","",""
+"Pilihan ganda","Puisi lama yang terdiri atas empat baris dan bersajak a-b-a-b disebut…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Syair bebas
+Pantun
+Novel
+Dongeng","2","","","","","","","","",""
+"Pilihan ganda","Kalimat utama biasanya memuat…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Judul buku
+Contoh tambahan saja
+Pokok pembahasan paragraf
+Daftar pustaka","3","","","","","","","","",""
+"Pilihan ganda","Kata “berlari” memiliki kata dasar…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Berl
+Larian
+Ari
+Lari","4","","","","","","","","",""
+"Pilihan ganda","Kata depan yang tepat: “Buku itu diletakkan … meja.”","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","pada atas
+di atas
+ke atas
+dari atas","2","","","","","","","","",""
+"Pilihan ganda","Teks yang menggambarkan objek secara terperinci disebut…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Deskripsi
+Prosedur
+Persuasi
+Eksposisi","1","","","","","","","","",""
+"Pilihan ganda","Kalimat perintah biasanya diakhiri tanda…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Petik
+Tanya
+Koma
+Seru","4","","","","","","","","",""
+"Pilihan ganda","Lawan kata “hemat” adalah…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Boros
+Cermat
+Sederhana
+Rajin","1","","","","","","","","",""
+"Pilihan ganda","Persamaan bunyi pada akhir baris puisi disebut…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Rima
+Bait
+Tema
+Larik","1","","","","","","","","",""
+"Pilihan ganda","Kata tanya untuk menanyakan alasan adalah…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Kapan
+Di mana
+Mengapa
+Siapa","3","","","","","","","","",""
+"Pilihan ganda","Paragraf yang baik membahas…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Banyak topik tak berkaitan
+Satu gagasan utama
+Judul saja
+Daftar kata","2","","","","","","","","",""
+"Pilihan ganda","Kalimat langsung biasanya menggunakan tanda…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Hubung
+Petik
+Kurung siku
+Garis miring","2","","","","","","","","",""
+"Pilihan ganda","Kata hubung yang menyatakan pertentangan adalah…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Lalu
+Tetapi
+Dan
+Serta","2","","","","","","","","",""
+"Pilihan ganda","Kata baku dari “resiko” adalah…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Risiko
+Resikko
+Riziko
+Resikho","1","","","","","","","","",""
+"Pilihan ganda","Orang yang menyampaikan pidato disebut…","1","Bahasa Indonesia","Membaca dan kebahasaan","Mudah","latihan, campuran","Orator
+Penulis surat
+Pendengar
+Penerjemah","1","","","","","","","","",""
+"Pilihan ganda","Komponen komputer yang menjalankan instruksi program adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Prosesor
+Speaker
+Keyboard
+Monitor","1","","","","","","","","",""
+"Pilihan ganda","Perangkat untuk memasukkan teks ke komputer adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Proyektor
+Keyboard
+Printer
+Monitor","2","","","","","","","","",""
+"Pilihan ganda","Perangkat yang menampilkan keluaran visual adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Monitor
+Mouse
+Scanner
+Mikrofon","1","","","","","","","","",""
+"Pilihan ganda","Kepanjangan CPU adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Central Program User
+Computer Personal Utility
+Control Power Unit
+Central Processing Unit","4","","","","","","","","",""
+"Pilihan ganda","Perangkat lunak untuk menjelajah internet disebut…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Pemutar musik
+Kompilator
+Browser
+Spreadsheet","3","","","","","","","","",""
+"Pilihan ganda","Contoh kata sandi yang lebih kuat adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Nama sendiri saja
+12345678
+password
+Gabungan huruf, angka, dan simbol","4","","","","","","","","",""
+"Pilihan ganda","Tindakan menjaga data pribadi di internet adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Mengunggah alamat rumah
+Tidak membagikan kata sandi
+Mengirim kode OTP
+Memakai sandi yang sama di semua akun","2","","","","","","","","",""
+"Pilihan ganda","Satuan data yang terdiri dari 8 bit disebut…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Megahertz
+Byte
+Kilobit
+Pixel","2","","","","","","","","",""
+"Pilihan ganda","Jaringan komputer global disebut…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Internet
+Bluetooth
+Intranet rumah
+Sistem operasi","1","","","","","","","","",""
+"Pilihan ganda","Program untuk mengolah angka dan tabel adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Pemutar video
+Peramban
+Spreadsheet
+Pengolah kata","3","","","","","","","","",""
+"Pilihan ganda","Perangkat untuk menggerakkan penunjuk layar adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Speaker
+Flashdisk
+Printer
+Mouse","4","","","","","","","","",""
+"Pilihan ganda","Tempat menyimpan berkas secara teratur di komputer disebut…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Folder
+Jendela
+Ikon daya
+Kursor","1","","","","","","","","",""
+"Pilihan ganda","Kepanjangan URL adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Universal Read Language
+United Resource Line
+User Record Link
+Uniform Resource Locator","4","","","","","","","","",""
+"Pilihan ganda","Pesan palsu untuk mencuri informasi pribadi disebut…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Enkripsi
+Cadangan
+Pembaruan
+Phishing","4","","","","","","","","",""
+"Pilihan ganda","Salinan data untuk mencegah kehilangan disebut…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Backup
+Cache
+Spam
+Cookie","1","","","","","","","","",""
+"Pilihan ganda","Perangkat lunak yang mengatur kerja komputer disebut…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Sistem operasi
+Kartu grafis
+Kabel data
+Baterai","1","","","","","","","","",""
+"Pilihan ganda","Contoh sistem operasi komputer adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Wi-Fi
+HTML
+Linux
+USB","3","","","","","","","","",""
+"Pilihan ganda","Ikon tempat berkas yang dihapus sementara sering disimpan adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Browser
+Recycle Bin
+Taskbar
+Control Panel","2","","","","","","","","",""
+"Pilihan ganda","Untuk mencari informasi di internet, kita dapat menggunakan…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Mesin pencari
+Kalkulator
+Notepad
+Paint","1","","","","","","","","",""
+"Pilihan ganda","Teknologi nirkabel jarak dekat untuk menghubungkan perangkat adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Bluetooth
+VGA
+Ethernet kabel
+HDMI","1","","","","","","","","",""
+"Pilihan ganda","Tindakan yang baik saat menerima tautan mencurigakan adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Mengunduh semua lampiran
+Membagikan ke semua teman
+Memasukkan kata sandi
+Memeriksa pengirim dan tidak sembarang mengeklik","4","","","","","","","","",""
+"Pilihan ganda","Ekstensi berkas gambar yang umum adalah…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran",".jpg
+.exe
+.xlsx
+.mp3","1","","","","","","","","",""
+"Pilihan ganda","Dalam flowchart, simbol belah ketupat biasanya menunjukkan…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Mulai atau selesai
+Keputusan atau percabangan
+Penyimpanan awan
+Dokumen cetak","2","","","","","","","","",""
+"Pilihan ganda","Urutan langkah logis untuk menyelesaikan masalah disebut…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Jaringan
+Resolusi
+Algoritma
+Perangkat keras","3","","","","","","","","",""
+"Pilihan ganda","Mengirim pesan sopan dan menghormati orang lain di internet berarti menerapkan…","1","Informatika","Komputer dan literasi digital","Mudah","latihan, campuran","Spam otomatis
+Etika digital
+Pembajakan
+Peretasan","2","","","","","","","","",""
+"Pilihan ganda","Unsur seni rupa berupa goresan memanjang disebut…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Nada
+Irama
+Garis
+Ruang","3","","","","","","","","",""
+"Pilihan ganda","Warna primer dalam seni rupa adalah…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Merah, kuning, dan biru
+Hitam, putih, dan abu-abu
+Hijau, jingga, dan ungu
+Merah muda, cokelat, dan emas","1","","","","","","","","",""
+"Pilihan ganda","Alat musik angklung dimainkan dengan cara…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Dipetik
+Ditiup
+Digoyangkan
+Digesek","3","","","","","","","","",""
+"Pilihan ganda","Tari Saman berasal dari…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Papua
+Aceh
+Bali
+Jawa Barat","2","","","","","","","","",""
+"Pilihan ganda","Lagu “Ampar-Ampar Pisang” berasal dari…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Sulawesi Utara
+Kalimantan Selatan
+Sumatera Barat
+Nusa Tenggara Timur","2","","","","","","","","",""
+"Pilihan ganda","Gambar yang dibuat untuk menjelaskan isi cerita disebut…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Ilustrasi
+Notasi
+Kolase suara
+Patung kinetik","1","","","","","","","","",""
+"Pilihan ganda","Karya seni yang memiliki panjang, lebar, dan tinggi disebut karya…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Dua dimensi
+Tiga dimensi
+Satu dimensi
+Datar","2","","","","","","","","",""
+"Pilihan ganda","Alat musik yang dimainkan dengan cara dipetik adalah…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Gendang
+Seruling
+Gitar
+Terompet","3","","","","","","","","",""
+"Pilihan ganda","Dalam musik, cepat lambatnya lagu disebut…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Dinamika
+Tempo
+Melodi
+Timbre","2","","","","","","","","",""
+"Pilihan ganda","Campuran warna biru dan kuning menghasilkan…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Hijau
+Jingga
+Ungu
+Merah","1","","","","","","","","",""
+"Pilihan ganda","Gerak berpindah tempat dalam tari disebut gerak…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Mimik
+Lokomotor
+Diam
+Nonlokomotor","2","","","","","","","","",""
+"Pilihan ganda","Pemanasan sebelum olahraga bertujuan untuk…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Mengganti latihan inti
+Menghentikan pernapasan
+Membuat tubuh langsung lelah
+Mempersiapkan tubuh dan mengurangi risiko cedera","4","","","","","","","","",""
+"Pilihan ganda","Permainan sepak bola dimainkan terutama menggunakan…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Raket
+Tangan
+Tongkat
+Kaki","4","","","","","","","","",""
+"Pilihan ganda","Jumlah pemain satu tim sepak bola di lapangan adalah…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","6
+11
+9
+5","2","","","","","","","","",""
+"Pilihan ganda","Dalam bola basket, memasukkan bola ke keranjang menghasilkan…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Gol bunuh diri
+Babak
+Set
+Poin","4","","","","","","","","",""
+"Pilihan ganda","Olahraga yang menggunakan raket dan kok adalah…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Bola voli
+Tenis meja saja
+Bulu tangkis
+Sepak takraw","3","","","","","","","","",""
+"Pilihan ganda","Gerakan menggiring bola dalam basket disebut…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Dribbling
+Heading
+Servis
+Smash","1","","","","","","","","",""
+"Pilihan ganda","Gaya renang dengan gerakan tangan bergantian dan posisi dada menghadap air disebut…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Gaya bebas
+Gaya kupu-kupu
+Gaya dada
+Gaya punggung","1","","","","","","","","",""
+"Pilihan ganda","Sikap tubuh saat start lari jarak pendek adalah…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Duduk bersila
+Berbaring
+Start berdiri tegak saja
+Start jongkok","4","","","","","","","","",""
+"Pilihan ganda","Permainan bola voli diawali dengan pukulan…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Blocking
+Passing bawah
+Smash lawan
+Servis","4","","","","","","","","",""
+"Pilihan ganda","Kegiatan menjaga kebugaran sebaiknya dilakukan secara…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Sekali seumur hidup
+Tanpa pemanasan selalu
+Hanya saat sakit
+Teratur","4","","","","","","","","",""
+"Pilihan ganda","Gerak dasar melompat menggunakan tolakan…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Siku
+Kepala
+Punggung
+Kaki","4","","","","","","","","",""
+"Pilihan ganda","Seni menempelkan berbagai bahan menjadi gambar disebut…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Aransemen
+Kaligrafi
+Pantomim
+Kolase","4","","","","","","","","",""
+"Pilihan ganda","Bunyi teratur yang menyusun lagu disebut…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Garis
+Tekstur
+Nada
+Warna","3","","","","","","","","",""
+"Pilihan ganda","Permainan tradisional yang menggunakan papan berlubang dan biji adalah…","1","Seni Budaya dan PJOK","Seni dan kebugaran","Mudah","latihan, campuran","Egrang
+Kelereng
+Bentengan
+Congklak","4","","","","","","","","",""
