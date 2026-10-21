@@ -1443,6 +1443,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .student-shell .page-heading p { max-width: 560px; }
 .student-logout { min-height: 34px; padding: 6px 12px; border: 1px solid var(--color-warm-mist); border-radius: 8px; background: transparent; color: var(--color-ink); cursor: pointer; }
 .student-logout:hover { background: #eeece6; }
+.logout-button { min-height: 34px; padding: 6px 12px; border: 1px solid var(--color-warm-mist); border-radius: 8px; background: transparent; color: var(--color-ink); cursor: pointer; }
+.logout-button:hover { background: #eeece6; }
 .student-exam-card { padding: 26px; }
 .student-exam-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-bottom: 22px; border-bottom: 1px solid var(--color-warm-mist); }
 .student-exam-card-head h2 { margin: 12px 0 4px; font-size: 22px; }

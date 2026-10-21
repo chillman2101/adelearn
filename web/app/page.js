@@ -34,7 +34,7 @@ export default function Home() {
       <div className="welcome-row">
         <div>
           <div className="eyebrow blue">
-            SELAMAT PAGI, BU AISYAH <span className="sun">✳</span>
+            RUANG KERJA GURU
           </div>
           <h1>
             Ruang kelasmu, <em>siap dimulai.</em>

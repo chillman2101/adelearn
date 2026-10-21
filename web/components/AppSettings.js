@@ -7,7 +7,7 @@ const STORAGE_KEY = "adelearn-app-settings";
 const defaults = {
   activeClass: "Kelas 8A",
   activeClassId: "",
-  teacherName: "Nur Aisyah",
+  teacherName: "Guru",
   teacherId: "",
   academicYear: "2026 / 2027",
 };
@@ -80,7 +80,7 @@ function initials(name) {
 export function SettingsDisplay({ variant }) {
   const { settings } = useAppSettings();
   if (variant === "class") return <><strong>{settings.activeClass}</strong><span>{settings.academicYear}</span></>;
-  if (variant === "teacher") return <><strong>{settings.teacherName}</strong><small>Guru · {settings.activeClass}</small></>;
+  if (variant === "teacher") return <><strong>Guru</strong><small>{settings.activeClass}</small></>;
   if (variant === "year") return <><div className="breadcrumb">Tahun ajaran <b>{settings.academicYear}</b><span>⌄</span></div></>;
-  return <>{initials(settings.teacherName)}</>;
+  return <>{initials("Guru")}</>;
 }

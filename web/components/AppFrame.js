@@ -7,15 +7,20 @@ import SidebarNav from "./SidebarNav";
 import StudentWorkspace from "./student/StudentWorkspace";
 
 function TeacherWorkspace({ children }) {
+  async function logout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    window.location.assign("/login");
+  }
+
   return <AppSettingsProvider><div className="app-shell">
     <aside className="sidebar">
       <Link href="/" className="brand"><span className="brand-mark">a</span><span><strong>adelearn</strong><small>RUANG GURU</small></span></Link>
       <div className="class-switch"><span className="eyebrow">KELAS AKTIF</span><SettingsDisplay variant="class" /></div>
       <SidebarNav />
-      <div className="sidebar-bottom"><div className="teacher-avatar"><SettingsDisplay variant="initials" /></div><div><SettingsDisplay variant="teacher" /></div><button className="more" type="button" aria-label="Keluar" onClick={async () => { await fetch("/api/auth/logout", { method: "POST" }); window.location.assign("/login"); }}>···</button></div>
+      <div className="sidebar-bottom"><div className="teacher-avatar"><SettingsDisplay variant="initials" /></div><div><SettingsDisplay variant="teacher" /></div></div>
     </aside>
     <main className="workspace">
-      <header className="topbar"><SettingsDisplay variant="year" /><div className="topbar-right"><span className="today-label">Ruang guru</span><div className="teacher-avatar mini"><SettingsDisplay variant="initials" /></div></div></header>
+      <header className="topbar"><SettingsDisplay variant="year" /><div className="topbar-right"><span className="today-label">Ruang guru</span><div className="teacher-avatar mini"><SettingsDisplay variant="initials" /></div><button type="button" className="logout-button" onClick={logout}>Keluar</button></div></header>
       <div className="content">{children}</div>
     </main>
   </div></AppSettingsProvider>;
