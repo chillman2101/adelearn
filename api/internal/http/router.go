@@ -75,6 +75,7 @@ func (a *API) Handler() http.Handler {
 	registerTeacher("POST /api/v1/questions/import/preview", a.previewQuestionImport)
 	registerTeacher("POST /api/v1/questions/import", a.importQuestions)
 	registerTeacher("GET /api/v1/students", a.listStudents)
+	registerTeacher("POST /api/v1/students/import", a.importStudents)
 	registerTeacher("POST /api/v1/students", a.createStudent)
 	registerTeacher("GET /api/v1/students/{id}", a.getStudent)
 	registerTeacher("PUT /api/v1/students/{id}", a.updateStudent)
@@ -156,6 +157,22 @@ func (a *API) listStudents(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	writeJSON(w, http.StatusOK, items)
+}
+
+func (a *API) importStudents(w http.ResponseWriter, r *http.Request) {
+	var body struct {
+		Students []students.Student `json:"students"`
+	}
+	if err := decode(r, &body); err != nil {
+		fail(w, http.StatusBadRequest, "invalid_json", "Format data impor tidak valid.", nil)
+		return
+	}
+	count, err := a.Students.Import(r.Context(), body.Students)
+	if err != nil {
+		handleErr(w, err)
+		return
+	}
+	writeJSON(w, http.StatusCreated, map[string]int{"imported": count})
 }
 
 func (a *API) createStudent(w http.ResponseWriter, r *http.Request) {

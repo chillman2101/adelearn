@@ -61,15 +61,29 @@ export default function StudentExamRunner({ attemptId }) {
   const scorePoints = Number(attempt?.score_points || 0);
   const scorePercent = maxPoints > 0 ? Math.round(Math.max(0, Math.min(100, scorePoints / maxPoints * 100))) : 0;
 
+  const refreshClosedAttempt = useCallback(async (failure) => {
+    if (failure.code !== "exam_unavailable") {
+      setError(failure.message);
+      return;
+    }
+    try {
+      const latestAttempt = await studentApi.attempt(attemptId);
+      setAttempt(latestAttempt);
+      setError(latestAttempt.status === "in_progress" ? failure.message : "");
+    } catch {
+      setError(failure.message);
+    }
+  }, [attemptId]);
+
   const flushSave = useCallback(async (questionId) => {
     const answer = latest.current.get(questionId);
     if (answer === undefined) return;
     latest.current.delete(questionId);
     setSaving(true);
     try { await studentApi.saveAnswer(attemptId, questionId, answer); setSavedAt(new Date()); }
-    catch (failure) { setError(failure.message); }
+    catch (failure) { await refreshClosedAttempt(failure); }
     finally { setSaving(latest.current.size > 0); }
-  }, [attemptId]);
+  }, [attemptId, refreshClosedAttempt]);
 
   const flushAll = useCallback(async () => {
     for (const timer of timers.current.values()) clearTimeout(timer);
@@ -94,8 +108,8 @@ export default function StudentExamRunner({ attemptId }) {
   useEffect(() => {
     if (secondsLeft !== 0 || attempt?.status !== "in_progress" || submitting.current) return;
     submitting.current = true;
-    flushAll().then(() => studentApi.submitAttempt(attemptId)).then(setAttempt).catch((failure) => setError(failure.message)).finally(() => { submitting.current = false; });
-  }, [attempt?.status, attemptId, flushAll, secondsLeft]);
+    flushAll().then(() => studentApi.submitAttempt(attemptId)).then(setAttempt).catch(refreshClosedAttempt).finally(() => { submitting.current = false; });
+  }, [attempt?.status, attemptId, flushAll, refreshClosedAttempt, secondsLeft]);
 
   useEffect(() => () => { for (const timer of timers.current.values()) clearTimeout(timer); }, []);
 
@@ -103,7 +117,7 @@ export default function StudentExamRunner({ attemptId }) {
     setConfirmSubmit(false); setError(""); setSaving(true);
     await flushAll();
     try { setAttempt(await studentApi.submitAttempt(attemptId)); }
-    catch (failure) { setError(failure.message); }
+    catch (failure) { await refreshClosedAttempt(failure); }
     finally { setSaving(false); }
   }
 

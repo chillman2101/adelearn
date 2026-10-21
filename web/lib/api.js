@@ -68,6 +68,7 @@ export const studentsApi = {
   list: (filters = {}) => request(`/students?${new URLSearchParams(Object.fromEntries(Object.entries(filters).filter(([, value]) => value)))}`),
   get: (id) => request(`/students/${id}`),
   save: (student, id) => request(`/students${id ? `/${id}` : ""}`, { method: id ? "PUT" : "POST", body: JSON.stringify(student) }),
+  import: (students) => request("/students/import", { method: "POST", body: JSON.stringify({ students }) }),
   archive: (id) => request(`/students/${id}`, { method: "DELETE" }),
 };
 

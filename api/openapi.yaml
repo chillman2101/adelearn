@@ -114,6 +114,30 @@ paths:
                 name: { type: string, minLength: 1 }
                 class_id: { type: string, format: uuid }
       responses: { '201': { description: Created student }, '400': { $ref: '#/components/responses/ValidationError' } }
+  /api/v1/students/import:
+    post:
+      summary: Import up to 500 students in one transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [students]
+              properties:
+                students:
+                  type: array
+                  minItems: 1
+                  maxItems: 500
+                  items:
+                    type: object
+                    required: [name, class_id]
+                    properties:
+                      name: { type: string, minLength: 1 }
+                      class_id: { type: string, format: uuid }
+      responses:
+        '201': { description: Students imported atomically }
+        '400': { $ref: '#/components/responses/ValidationError' }
   /api/v1/students/{id}:
     parameters: [{ in: path, name: id, required: true, schema: { type: string, format: uuid } }]
     get:

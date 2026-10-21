@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { studentApi } from "../../lib/api";
 import { useToast } from "../../components/ToastProvider";
 
@@ -23,27 +23,59 @@ export default function StudentExamPage() {
   const [confirm, setConfirm] = useState(false);
   const [busy, setBusy] = useState(false);
   const [now, setNow] = useState(() => Date.now());
-  useEffect(() => { studentApi.exam().then(setExam).catch((failure) => setError(failure.message)); }, []);
+  const refreshExam = useCallback(() => {
+    return studentApi.exam().then((latestExam) => {
+      setExam(latestExam);
+      setError("");
+      return latestExam;
+    }).catch((failure) => {
+      setError(failure.message);
+      throw failure;
+    });
+  }, []);
+  useEffect(() => {
+    refreshExam().catch(() => {});
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === "visible") refreshExam().catch(() => {});
+    };
+    window.addEventListener("focus", refreshWhenVisible);
+    window.addEventListener("pageshow", refreshWhenVisible);
+    document.addEventListener("visibilitychange", refreshWhenVisible);
+    return () => {
+      window.removeEventListener("focus", refreshWhenVisible);
+      window.removeEventListener("pageshow", refreshWhenVisible);
+      document.removeEventListener("visibilitychange", refreshWhenVisible);
+    };
+  }, [refreshExam]);
   useEffect(() => { const timer = setInterval(() => setNow(Date.now()), 15000); return () => clearInterval(timer); }, []);
   const activeAttempt = exam?.attempts?.find((item) => item.status === "in_progress");
   const available = exam && exam.status === "published" && now >= new Date(exam.starts_at).getTime() && now <= new Date(exam.checkin_ends_at).getTime() && exam.attempts_left > 0;
   const unavailableMessage = exam && (exam.attempts_left <= 0 ? "Kesempatan mengerjakan ujian sudah habis." : exam.status !== "published" ? "Ujian belum diaktifkan oleh guru." : now < new Date(exam.starts_at).getTime() ? `Ujian baru dapat dimulai ${dateTime(exam.starts_at)}.` : now > new Date(exam.checkin_ends_at).getTime() ? "Batas waktu untuk mulai ujian sudah lewat." : "Ujian belum dapat dimulai saat ini.");
-  function requestStart() {
-    if (activeAttempt) {
-      router.push(`/student/attempt/${activeAttempt.id}`);
-      return;
+  async function requestStart() {
+    setBusy(true);
+    try {
+      const latestExam = await refreshExam();
+      const latestActiveAttempt = latestExam.attempts?.find((item) => item.status === "in_progress");
+      if (latestActiveAttempt) {
+        router.push(`/student/attempt/${latestActiveAttempt.id}`);
+        return;
+      }
+      const currentTime = Date.now();
+      let reason = "";
+      if (latestExam.attempts_left <= 0) reason = "Kesempatan mengerjakan ujian sudah habis.";
+      else if (latestExam.status !== "published") reason = "Ujian belum diaktifkan oleh guru.";
+      else if (currentTime < new Date(latestExam.starts_at).getTime()) reason = `Ujian baru dapat dimulai ${dateTime(latestExam.starts_at)}.`;
+      else if (currentTime > new Date(latestExam.checkin_ends_at).getTime()) reason = "Batas waktu untuk mulai ujian sudah lewat.";
+      if (reason) {
+        showToast(reason, "error");
+        return;
+      }
+      setConfirm(true);
+    } catch (failure) {
+      showToast(failure.message || "Informasi ujian belum dapat diperbarui. Coba lagi.", "error");
+    } finally {
+      setBusy(false);
     }
-    const currentTime = Date.now();
-    let reason = "";
-    if (exam.attempts_left <= 0) reason = "Kesempatan mengerjakan ujian sudah habis.";
-    else if (exam.status !== "published") reason = "Ujian belum diaktifkan oleh guru.";
-    else if (currentTime < new Date(exam.starts_at).getTime()) reason = `Ujian baru dapat dimulai ${dateTime(exam.starts_at)}.`;
-    else if (currentTime > new Date(exam.checkin_ends_at).getTime()) reason = "Batas waktu untuk mulai ujian sudah lewat.";
-    if (reason) {
-      showToast(reason, "error");
-      return;
-    }
-    setConfirm(true);
   }
   async function start() {
     setBusy(true); setError("");

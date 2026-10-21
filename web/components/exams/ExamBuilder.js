@@ -304,11 +304,24 @@ export default function ExamBuilder({ initialId, initialStep = "settings" }) {
     setErrors({});
     setBusy(true);
     try {
-      const saved = await examsApi.save(examPayload(), draft?.id);
+      let saved;
+      let replacedMissingDraft = false;
+      try {
+        saved = await examsApi.save(examPayload(), draft?.id);
+      } catch (error) {
+        if (!draft?.id || error.code !== "not_found") throw error;
+        saved = await examsApi.save(examPayload());
+        replacedMissingDraft = true;
+      }
       setDraft(saved);
-      lastCompositionRef.current = JSON.stringify(compositionPayload());
+      lastCompositionRef.current = replacedMissingDraft
+        ? JSON.stringify(compositionPayload([], [], 0, {}))
+        : JSON.stringify(compositionPayload());
       setCompositionReady(true);
       setStep("questions");
+      if (replacedMissingDraft) {
+        showToast("Draf lama tidak ditemukan. Draf baru dibuat; susunan soal akan disimpan kembali.");
+      }
     } catch (err) {
       setErrors(err.fieldErrors || {});
       showToast(err.message || "Draf ujian belum dapat disimpan.", "error");
@@ -829,7 +842,7 @@ export default function ExamBuilder({ initialId, initialStep = "settings" }) {
             {step === "settings" ? (
               <>
                 <Link className="button secondary" href="/exams">Batal</Link>
-                <button type="button" className="button primary" disabled={busy} onClick={continueToQuestions}>{busy ? "Menyimpan draf…" : "Lanjut pilih soal →"}</button>
+                <button type="button" className="button primary" disabled={busy} onClick={continueToQuestions}>{busy ? "Menyimpan draf…" : "Simpan informasi & lanjut →"}</button>
               </>
             ) : (
               <button type="button" className="button secondary" onClick={() => setStep("settings")}>Kembali ke pengaturan</button>
@@ -880,7 +893,7 @@ export default function ExamBuilder({ initialId, initialStep = "settings" }) {
           {step === "settings" ? (
             <div className="preview-add-questions">
               <span className="field-note">Atur jadwal dan jumlah soal terlebih dahulu.</span>
-              <button type="button" className="button primary" disabled={busy} onClick={continueToQuestions}>{busy ? "Menyimpan draf…" : "Lanjut pilih soal →"}</button>
+              <button type="button" className="button primary" disabled={busy} onClick={continueToQuestions}>{busy ? "Menyimpan draf…" : "Simpan informasi & lanjut →"}</button>
             </div>
           ) : remaining > 0 && (
             <div className="preview-add-questions">

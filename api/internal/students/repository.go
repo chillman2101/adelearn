@@ -79,6 +79,31 @@ func (r *Repository) Create(ctx context.Context, item Student) (Student, error) 
 	return r.Get(ctx, item.ID)
 }
 
+func (r *Repository) Import(ctx context.Context, items []Student) (int, error) {
+	if len(items) == 0 || len(items) > 500 {
+		return 0, FieldErrors{"rows": "Jumlah siswa impor harus antara 1 sampai 500."}
+	}
+	for i := range items {
+		if err := validate(&items[i]); err != nil {
+			return 0, FieldErrors{"rows": "Setiap baris harus memiliki nama siswa dan kelas."}
+		}
+	}
+	tx, err := r.DB.BeginTx(ctx, nil)
+	if err != nil {
+		return 0, err
+	}
+	defer tx.Rollback()
+	for _, item := range items {
+		if _, err = tx.ExecContext(ctx, `INSERT INTO students(class_id,name) VALUES($1,$2)`, item.ClassID, item.Name); err != nil {
+			return 0, err
+		}
+	}
+	if err = tx.Commit(); err != nil {
+		return 0, err
+	}
+	return len(items), nil
+}
+
 func (r *Repository) Update(ctx context.Context, id string, item Student) (Student, error) {
 	if err := validate(&item); err != nil {
 		return Student{}, err
