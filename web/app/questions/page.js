@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { questionsApi } from "../../lib/api";
 import CatalogSelect from "../../components/CatalogSelect";
+import { useToast } from "../../components/ToastProvider";
+import AppCheckbox from "../../components/AppCheckbox";
 const labels = {
   single_choice: "Pilihan ganda",
   multi_select: "Pilihan ganda kompleks",
@@ -16,7 +18,11 @@ const labels = {
 };
 export default function QuestionsPage() {
   const router = useRouter();
+  const { showToast } = useToast();
   const [data, setData] = useState([]);
+  const [selectedIds, setSelectedIds] = useState([]);
+  const [archiving, setArchiving] = useState(false);
+  const [archiveConfirmation, setArchiveConfirmation] = useState(null);
   const [filters, setFilters] = useState({});
   const [shownFilters, setShownFilters] = useState([]);
   const [error, setError] = useState("");
@@ -34,19 +40,29 @@ export default function QuestionsPage() {
     setFilters((current) => { const next = { ...current }; delete next[key]; return next; });
   }
   useEffect(() => {
+    setSelectedIds([]);
     load();
   }, [filters]);
-  async function archive(id) {
-    if (
-      !window.confirm("Arsipkan soal ini? Soal tidak akan muncul di bank soal.")
-    )
-      return;
-    try {
-      await questionsApi.archive(id);
-      load();
-    } catch (e) {
-      setError(e.message);
-    }
+  function archive(id) {
+    setArchiveConfirmation({ ids: [id], message: "Soal tidak akan muncul lagi di bank soal." });
+  }
+  function archiveSelected() {
+    const ids = data.filter((question) => selectedIds.includes(question.id)).map((question) => question.id);
+    if (!ids.length || archiving) return;
+    setArchiveConfirmation({ ids, message: `${ids.length} soal tidak akan muncul lagi di bank soal.` });
+  }
+  async function confirmArchive() {
+    const ids = archiveConfirmation?.ids || [];
+    if (!ids.length || archiving) return;
+    setArchiving(true);
+    setArchiveConfirmation(null);
+    const results = await Promise.allSettled(ids.map((id) => questionsApi.archive(id)));
+    const archivedIds = ids.filter((_, index) => results[index].status === "fulfilled");
+    const failedCount = results.length - archivedIds.length;
+    setSelectedIds((current) => current.filter((id) => !archivedIds.includes(id)));
+    await load();
+    showToast(failedCount ? `${archivedIds.length} soal diarsipkan, ${failedCount} gagal.` : `${archivedIds.length} soal berhasil diarsipkan.`, failedCount ? "error" : "success");
+    setArchiving(false);
   }
   return (
     <>
@@ -101,10 +117,12 @@ export default function QuestionsPage() {
           </div>)}
         </div>}
       </div>
+      {selectedIds.length > 0 && <div className="bulk-selection-actions"><span>{selectedIds.length} soal dipilih</span><button type="button" className="button secondary" disabled={archiving} onClick={archiveSelected}>{archiving ? "Mengarsipkan…" : `Arsipkan ${selectedIds.length} soal`}</button></div>}
       <div className="table-wrap">
         <table className="data-table">
           <thead>
             <tr>
+              <th><AppCheckbox label="Pilih semua soal yang tampil" checked={data.length > 0 && data.every((question) => selectedIds.includes(question.id))} indeterminate={selectedIds.length > 0 && selectedIds.length < data.length} onChange={(event) => setSelectedIds(event.target.checked ? data.map((question) => question.id) : [])} /></th>
               <th>Pertanyaan</th>
               <th>Tipe</th>
               <th>Mata pelajaran</th>
@@ -135,6 +153,7 @@ export default function QuestionsPage() {
                     }
                   }}
                 >
+                  <td><AppCheckbox label={`Pilih soal: ${q.prompt}`} checked={selectedIds.includes(q.id)} onChange={(event) => setSelectedIds((current) => event.target.checked ? [...new Set([...current, q.id])] : current.filter((id) => id !== q.id))} /></td>
                   <td>
                     <strong>
                       {q.prompt.length > 72
@@ -162,7 +181,7 @@ export default function QuestionsPage() {
               ))
             ) : (
               <tr>
-                <td colSpan="8" className="table-empty">
+                <td colSpan="9" className="table-empty">
                   {error
                     ? "Hubungkan API untuk memuat bank soal."
                     : "Belum ada soal yang cocok. Coba ubah filter atau tulis soal pertama."}
@@ -178,6 +197,7 @@ export default function QuestionsPage() {
         </span>
         <span>Bank soal · lintas kelas</span>
       </footer>
+      {archiveConfirmation && <div className="confirm-overlay" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && !archiving && setArchiveConfirmation(null)}><section className="confirm-dialog" role="alertdialog" aria-modal="true" aria-labelledby="question-archive-title" aria-describedby="question-archive-description"><span className="eyebrow">KONFIRMASI ARSIP</span><h2 id="question-archive-title">Arsipkan {archiveConfirmation.ids.length === 1 ? "soal ini" : `${archiveConfirmation.ids.length} soal terpilih`}?</h2><p id="question-archive-description">{archiveConfirmation.message}</p><div className="confirm-dialog-actions"><button type="button" className="button secondary" disabled={archiving} onClick={() => setArchiveConfirmation(null)}>Batal</button><button type="button" className="button primary" disabled={archiving} onClick={confirmArchive}>{archiving ? "Mengarsipkan…" : "Arsipkan"}</button></div></section></div>}
     </>
   );
 }

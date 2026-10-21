@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { examsApi, questionsApi, request } from "../../lib/api";
 import CatalogSelect from "../CatalogSelect";
+import AppCheckbox from "../AppCheckbox";
 import { useAppSettings } from "../AppSettings";
 import { useToast } from "../ToastProvider";
 const TYPES = [
@@ -487,8 +488,8 @@ export default function ExamBuilder({ initialId, initialStep = "settings" }) {
               </div>}
               <div className="field">
                 <label className="check timer-toggle-label">
-                  <input
-                    type="checkbox"
+                  <AppCheckbox
+                    className="app-checkbox--compact"
                     checked={form.timer_enabled}
                     onChange={(e) => update("timer_enabled", e.target.checked)}
                   />{" "}
@@ -565,8 +566,8 @@ export default function ExamBuilder({ initialId, initialStep = "settings" }) {
                 <div style={{ maxHeight: 300, overflowY: "auto" }}>
                   {bank.map((q) => (
                     <label className="compose-question" key={q.id}>
-                      <input
-                        type="checkbox"
+                      <AppCheckbox
+                        className="app-checkbox--question"
                         checked={selected.some((s) => s.id === q.id)}
                         onChange={() => toggle(q)}
                       />

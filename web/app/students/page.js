@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { catalogsApi, studentsApi } from "../../lib/api";
 import { useAppSettings } from "../../components/AppSettings";
 import { useToast } from "../../components/ToastProvider";
+import AppCheckbox from "../../components/AppCheckbox";
 
 const blankForm = { name: "", class_id: "" };
 
@@ -13,6 +14,9 @@ export default function StudentsPage() {
   const { settings } = useAppSettings();
   const { showToast } = useToast();
   const [students, setStudents] = useState([]);
+  const [selectedIds, setSelectedIds] = useState([]);
+  const [archiving, setArchiving] = useState(false);
+  const [archiveConfirmation, setArchiveConfirmation] = useState(null);
   const [classes, setClasses] = useState([]);
   const [query, setQuery] = useState("");
   const [classFilter, setClassFilter] = useState("");
@@ -38,7 +42,10 @@ export default function StudentsPage() {
     let active = true;
     setError("");
     studentsApi.list({ q: query.trim(), class_id: classFilter }).then((rows) => {
-      if (active) setStudents(rows);
+      if (active) {
+        setStudents(rows);
+        setSelectedIds((current) => current.filter((id) => rows.some((student) => student.id === id)));
+      }
     }).catch((e) => {
       if (active) setError(e.message);
     });
@@ -78,15 +85,28 @@ export default function StudentsPage() {
     }
   }
 
-  async function archive(student) {
-    if (!window.confirm(`Arsipkan data ${student.name}?`)) return;
-    try {
-      await studentsApi.archive(student.id);
-      setReloadKey((value) => value + 1);
-      showToast("Siswa berhasil diarsipkan.");
-    } catch (e) {
-      showToast(e.message || "Siswa gagal diarsipkan.", "error");
-    }
+  function archive(student) {
+    setArchiveConfirmation({ ids: [student.id], message: `Data ${student.name} akan diarsipkan dan akses ujiannya dicabut.` });
+  }
+
+  function archiveSelected() {
+    const ids = students.filter((student) => selectedIds.includes(student.id)).map((student) => student.id);
+    if (!ids.length || archiving) return;
+    setArchiveConfirmation({ ids, message: `${ids.length} siswa akan diarsipkan dan akses ujian mereka dicabut.` });
+  }
+
+  async function confirmArchive() {
+    const ids = archiveConfirmation?.ids || [];
+    if (!ids.length || archiving) return;
+    setArchiving(true);
+    setArchiveConfirmation(null);
+    const results = await Promise.allSettled(ids.map((id) => studentsApi.archive(id)));
+    const archivedIds = ids.filter((_, index) => results[index].status === "fulfilled");
+    const failedCount = results.length - archivedIds.length;
+    setSelectedIds((current) => current.filter((id) => !archivedIds.includes(id)));
+    setReloadKey((value) => value + 1);
+    showToast(failedCount ? `${archivedIds.length} siswa diarsipkan, ${failedCount} gagal.` : `${archivedIds.length} siswa berhasil diarsipkan.`, failedCount ? "error" : "success");
+    setArchiving(false);
   }
 
   async function previewImport(event) {
@@ -206,26 +226,29 @@ export default function StudentsPage() {
     </section>}
 
     <div className="toolbar students-toolbar">
-      <input className="input filter-search" placeholder="⌕  Cari nama siswa…" value={query} onChange={(event) => setQuery(event.target.value)} />
-      <select className="select filter-select" aria-label="Filter kelas" value={classFilter} onChange={(event) => setClassFilter(event.target.value)}>
+      <input className="input filter-search" placeholder="⌕  Cari nama siswa…" value={query} onChange={(event) => { setSelectedIds([]); setQuery(event.target.value); }} />
+      <select className="select filter-select" aria-label="Filter kelas" value={classFilter} onChange={(event) => { setSelectedIds([]); setClassFilter(event.target.value); }}>
         <option value="">Semua kelas</option>
         {classes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
       </select>
       <span className="eyebrow">{students.length} SISWA</span>
     </div>
+    {selectedIds.length > 0 && <div className="bulk-selection-actions"><span>{selectedIds.length} siswa dipilih</span><button type="button" className="button secondary" disabled={archiving} onClick={archiveSelected}>{archiving ? "Mengarsipkan…" : `Arsipkan ${selectedIds.length} siswa`}</button></div>}
 
     <div className="table-wrap">
       <table className="data-table">
-        <thead><tr><th>Nama siswa</th><th>Kelas</th><th></th></tr></thead>
+        <thead><tr><th><AppCheckbox label="Pilih semua siswa yang tampil" checked={students.length > 0 && students.every((student) => selectedIds.includes(student.id))} indeterminate={selectedIds.length > 0 && selectedIds.length < students.length} onChange={(event) => setSelectedIds(event.target.checked ? students.map((student) => student.id) : [])} /></th><th>Nama siswa</th><th>Kelas</th><th></th></tr></thead>
         <tbody>
           {students.length ? students.map((student) => <tr key={student.id} className="student-clickable-row" role="link" tabIndex={0} aria-label={`Buka detail ${student.name}`} onClick={() => router.push(`/students/${student.id}`)} onKeyDown={(event) => { if (event.target === event.currentTarget && event.key === "Enter") router.push(`/students/${student.id}`); }}>
+            <td><AppCheckbox label={`Pilih siswa: ${student.name}`} checked={selectedIds.includes(student.id)} onClick={(event) => event.stopPropagation()} onChange={(event) => setSelectedIds((current) => event.target.checked ? [...new Set([...current, student.id])] : current.filter((id) => id !== student.id))} /></td>
             <td><strong>{student.name}</strong></td>
             <td>{student.class}</td>
             <td><div className="row-actions"><button type="button" onClick={(event) => { event.stopPropagation(); startEdit(student); }}>Ubah</button><button type="button" onClick={(event) => { event.stopPropagation(); archive(student); }}>Arsip</button></div></td>
-          </tr>) : <tr><td colSpan="3" className="table-empty">{error ? "Belum dapat memuat data siswa." : query || classFilter ? "Tidak ada siswa yang cocok dengan pencarian ini." : "Belum ada siswa. Tambahkan siswa untuk mulai mengisi daftar."}</td></tr>}
+          </tr>) : <tr><td colSpan="4" className="table-empty">{error ? "Belum dapat memuat data siswa." : query || classFilter ? "Tidak ada siswa yang cocok dengan pencarian ini." : "Belum ada siswa. Tambahkan siswa untuk mulai mengisi daftar."}</td></tr>}
         </tbody>
       </table>
     </div>
     <footer className="page-footer"><span>Menampilkan {students.length} siswa</span><span>Data siswa · dikelompokkan berdasarkan kelas</span></footer>
+    {archiveConfirmation && <div className="confirm-overlay" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && !archiving && setArchiveConfirmation(null)}><section className="confirm-dialog" role="alertdialog" aria-modal="true" aria-labelledby="student-archive-title" aria-describedby="student-archive-description"><span className="eyebrow">KONFIRMASI ARSIP</span><h2 id="student-archive-title">Arsipkan {archiveConfirmation.ids.length === 1 ? "siswa ini" : `${archiveConfirmation.ids.length} siswa terpilih`}?</h2><p id="student-archive-description">{archiveConfirmation.message}</p><div className="confirm-dialog-actions"><button type="button" className="button secondary" disabled={archiving} onClick={() => setArchiveConfirmation(null)}>Batal</button><button type="button" className="button primary" disabled={archiving} onClick={confirmArchive}>{archiving ? "Mengarsipkan…" : "Arsipkan"}</button></div></section></div>}
   </>;
 }

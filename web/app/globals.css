@@ -1445,6 +1445,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .student-logout:hover { background: #eeece6; }
 .logout-button { min-height: 34px; padding: 6px 12px; border: 1px solid var(--color-warm-mist); border-radius: 8px; background: transparent; color: var(--color-ink); cursor: pointer; }
 .logout-button:hover { background: #eeece6; }
+.bulk-selection-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin: -4px 0 12px; color: var(--color-graphite); font-size: 12px; }
+.app-checkbox { appearance: none; -webkit-appearance: none; display: inline-grid; place-content: center; width: 20px; height: 20px; flex: 0 0 20px; margin: 0; border: 1.5px solid #b8b8b1; border-radius: 6px; background: var(--color-soft-paper); color: #fff; vertical-align: middle; cursor: pointer; transition: border-color .14s ease, background-color .14s ease, box-shadow .14s ease; }
+.app-checkbox:hover { border-color: var(--color-deep-teal); }
+.app-checkbox:checked, .app-checkbox:indeterminate { border-color: var(--color-deep-teal); background: var(--color-deep-teal); }
+.app-checkbox:checked::after { content: ""; width: 9px; height: 5px; border: solid currentColor; border-width: 0 0 2px 2px; transform: translateY(-1px) rotate(-45deg); }
+.app-checkbox:indeterminate::after { content: ""; width: 9px; height: 2px; border-radius: 2px; background: currentColor; }
+.app-checkbox:focus-visible { outline: 3px solid rgba(1, 106, 113, .22); outline-offset: 2px; }
+.app-checkbox:disabled { cursor: not-allowed; opacity: .55; }
+.app-checkbox--compact { width: 13px; height: 13px; flex-basis: 13px; border-radius: 3px; }
+.app-checkbox--compact:checked::after { width: 6px; height: 3px; border-width: 0 0 1.5px 1.5px; }
+.app-checkbox--question { width: 16px; height: 16px; flex-basis: 16px; border-radius: 4px; margin-top: 3px; }
+.app-checkbox--question:checked::after, .app-checkbox--answer:checked::after { width: 8px; height: 4px; }
+.app-checkbox--answer { width: 18px; height: 18px; flex-basis: 18px; margin: 1px 0 0; border-radius: 5px; }
 .student-exam-card { padding: 26px; }
 .student-exam-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-bottom: 22px; border-bottom: 1px solid var(--color-warm-mist); }
 .student-exam-card-head h2 { margin: 12px 0 4px; font-size: 22px; }
@@ -1565,7 +1578,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .student-answer-option { display: flex; align-items: flex-start; gap: 12px; padding: 14px 15px; border: 1px solid var(--color-warm-mist); border-radius: 12px; background: var(--color-soft-paper); color: var(--color-ink); cursor: pointer; font-size: 14px; line-height: 1.5; transition: border-color .15s ease, background-color .15s ease; }
 .student-answer-option:hover { border-color: #a9c5c1; }
 .student-answer-option.selected { border-color: var(--color-deep-teal); background: #f0f7f5; }
-.student-answer-option input { width: 18px; height: 18px; flex: 0 0 18px; margin: 1px 0 0; accent-color: var(--color-deep-teal); }
+.student-answer-option .app-checkbox--answer { width: 18px; height: 18px; flex: 0 0 18px; margin: 1px 0 0; }
 .student-answer-option > span { min-width: 0; }
 .student-question-image { display: block; max-width: min(100%, 680px); max-height: 360px; margin: 14px 0; border-radius: 10px; object-fit: contain; }
 .student-text-answer, .student-essay-answer { font-size: 15px; }
