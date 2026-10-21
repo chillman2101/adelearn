@@ -1,4 +1,4 @@
-# Adelearn — Manajemen Ujian
+# Adelearn — Manajemen Ujian.
 
 Tahap pertama menyediakan ruang kerja guru untuk mengelola bank soal dan menyusun ujian untuk satu kelas, termasuk impor soal dari Excel. Sistem menggunakan Next.js (JavaScript), Go REST API, dan PostgreSQL. Siswa, hasil ujian, dan laporan direncanakan pada tahap berikutnya.
 
